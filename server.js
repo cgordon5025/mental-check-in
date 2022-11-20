@@ -1,19 +1,18 @@
 const express = require('express');
-const Models = require('./models')
-const seedAll = reuiqre('./seeds/index')
+const seedAll = require('./seeds/index')
 const exphb = require('express-handlebars')
 const session = require('express-session')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
+
 const path = require('path')
 const { strict } = require('assert')
 
 const routes = require('./controllers')
 const sequelize = require('./config/connection')
-const helpers = require('./utils/helpers')
+// const helpers = require('./utils/helpers')
 const { setDefaultResultOrder } = require('dns');
-const exp = require('constants');
 
-const app = express()
+const app = express();
 const PORT = process.env.PORT || 3001
 
 const sess = {
@@ -33,16 +32,16 @@ const sess = {
 
 app.use(session(sess))
 
-const hbs = exphb.create({ helpers })
+const hbs = exphb.create({})
 
 app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-app.listen(routes)
+app.use(routes)
 
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 sequelize.sync({ force: true }).then(async () => {
     await seedAll()

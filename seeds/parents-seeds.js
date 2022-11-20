@@ -29,4 +29,4 @@ const parentData = [
 ]
 
 const seedParents = () => Parents.bulkCreate(parentData)
-module.export = seedParents
+module.exports = seedParents

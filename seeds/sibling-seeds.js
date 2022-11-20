@@ -25,4 +25,4 @@ const siblingData = [
 
 const seedSibs = () => Siblings.bulkCreate(siblingData)
 
-module.export = seedSibs
+module.exports = seedSibs

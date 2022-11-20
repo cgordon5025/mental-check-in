@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
         const newEntry = await DiaryEntry.create({
             ...body
         });
-        res.status(200).json(err)
+        res.status(200).json(newEntry)
     } catch (err) {
         res.status(500).json(err)
     }

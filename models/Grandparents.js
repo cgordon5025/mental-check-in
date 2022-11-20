@@ -19,13 +19,20 @@ Grandparents.init(
             type: DataTypes.TEXT,
             allowNull: true
         },
-        family_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: "family",
+                model: "user",
                 key: "id"
             }
-        }
+        },
+        // family_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: "family",
+        //         key: "id"
+        //     }
+        // }
     },
     {
         sequelize,

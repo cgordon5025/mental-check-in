@@ -1,4 +1,4 @@
-const { Grandparents } = require('../models')
+const { Grandparents, Parents, Siblings } = require('../models')
 
 const grandparentData = [
     {
@@ -62,5 +62,60 @@ const grandparentData = [
         family_id: 3
     }
 ]
-const seedGPs = () => Grandparents.bulkCreate(grandparentData)
-module.exports = seedGPs
+const parentData = [
+    {
+        relation: "Sue",
+        family_id: 1
+    },
+    {
+        relation: "Jack",
+        family_id: 1
+    },
+    {
+        relation: "Susan",
+        family_id: 2
+    },
+    {
+        relation: "Marie",
+        family_id: 2
+    },
+    {
+        relation: "Ross",
+        family_id: 3
+    },
+    {
+        relation: "Ozzy",
+        details: "maternal grandmother",
+        family_id: 3
+    },
+]
+const siblingData = [
+    {
+        name: "Ben",
+        relation: "Brother",
+        family_id: 1
+    },
+    {
+        name: "Jung",
+        relation: "Brother",
+        family_id: 1
+    },
+    {
+        name: "Emma",
+        relation: "Sister",
+        family_id: 2
+    },
+    {
+        name: "Ev",
+        relation: "sibling",
+        family_id: 2
+    },
+]
+
+// const seedGPs = () => Grandparents.bulkCreate(grandparentData)
+const seedFamMembers = () => {
+    Grandparents.bulkCreate(grandparentData),
+        Parents.bulkCreate(parentData),
+        Siblings.bulkCreate(siblingData)
+}
+module.exports = seedFamMembers

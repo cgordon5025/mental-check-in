@@ -45,4 +45,4 @@ const diaryEntryData = [
 
 const seedDiaryEntry = () => DiaryEntry.bulkCreate(diaryEntryData)
 
-module.export = seedDiaryEntry
+module.exports = seedDiaryEntry

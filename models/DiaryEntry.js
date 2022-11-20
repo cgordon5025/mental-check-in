@@ -26,13 +26,13 @@ DiaryEntry.init(
                 key: "id"
             }
         },
-        diary_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "diary",
-                key: "id"
-            }
-        }
+        // diary_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: "diary",
+        //         key: "id"
+        //     }
+        // }
     },
     {
         sequelize,
