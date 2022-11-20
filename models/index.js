@@ -3,6 +3,7 @@ const Family = require('./Family')
 const Grandparents = require('./Grandparents')
 const Parents = require('./Parents')
 const Siblings = require('./Siblings');
+const Diary = require('./Diary')
 const DiaryEntry = require('./DiaryEntry');
 
 User.hasOne(Family, {
@@ -13,12 +14,20 @@ Family.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
-User.hasMany(DiaryEntry, {
+User.hasOne(Diary, {
     foreignKey: "user_id"
 });
 
-DiaryEntry.belongsTo(User, {
-    foreignKey: "user_id",
+Diary.belongsTo(User, {
+    foreignKey: "user_id"
+});
+
+Diary.hasMany(DiaryEntry, {
+    foreignKey: "diary_id"
+});
+
+DiaryEntry.belongsTo(Diary, {
+    foreignKey: "diary_id",
     onDelete: "SET NULL"
 })
 Family.hasMany(Grandparents, {
@@ -45,4 +54,4 @@ Siblings.belongsTo(Family, {
     foreignKey: "family_id"
 });
 
-module.exports = { User, DiaryEntry, Family, Grandparents, Parents, Siblings }
+module.exports = { User, Diary, DiaryEntry, Family, Grandparents, Parents, Siblings }

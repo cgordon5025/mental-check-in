@@ -25,6 +25,13 @@ DiaryEntry.init(
                 model: "user",
                 key: "id"
             }
+        },
+        diary_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "diary",
+                key: "id"
+            }
         }
     },
     {
