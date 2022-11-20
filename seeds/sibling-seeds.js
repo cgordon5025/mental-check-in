@@ -4,22 +4,22 @@ const siblingData = [
     {
         name: "Ben",
         relation: "Brother",
-        family_id: 1
+        user_id: 1
     },
     {
         name: "Jung",
         relation: "Brother",
-        family_id: 1
+        user_id: 1
     },
     {
         name: "Emma",
         relation: "Sister",
-        family_id: 2
+        user_id: 2
     },
     {
         name: "Ev",
         relation: "sibling",
-        family_id: 2
+        user_id: 2
     },
 ]
 

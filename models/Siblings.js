@@ -23,13 +23,13 @@ Siblings.init(
             type: DataTypes.TEXT,
             allowNull: true
         },
-        family_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: "family",
-                key: "id"
-            }
-        }
+        // family_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: "family",
+        //         key: "id"
+        //     }
+        // }
     },
     {
         sequelize,

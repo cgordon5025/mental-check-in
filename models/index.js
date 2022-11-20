@@ -1,45 +1,19 @@
 const User = require('./User');
-// const Family = require('./Family')
 const Grandparents = require('./Grandparents')
 const Parents = require('./Parents')
 const Siblings = require('./Siblings');
-// const Diary = require('./Diary')
 const DiaryEntry = require('./DiaryEntry');
+// const Family = require('./Family')
+// const Diary = require('./Diary')
 
-
-User.hasMany(Grandparents, {
-    foreignKey: "user_id"
-})
-Grandparents.belongsTo(User, {
-    foreignKey: "user_id"
-})
-
-User.hasMany(Parents, {
-    foreignKey: "user_id"
-})
-Parents.belongsTo(User, {
-    foreignKey: "user_id"
-})
-
-User.hasMany(Siblings, {
-    foreignKey: "user_id"
-})
-Siblings.belongsTo(User, {
-    foreignKey: "user_id"
-})
-
-User.hasMany(DiaryEntry, {
-    foreignKey: "user_id"
-})
-DiaryEntry.belongsTo(User, {
-    foreignKey: "user_id"
-})
 // User.hasOne(Family, {
 //     foreignKey: 'user_id'
 // });
 
 // Family.belongsTo(User, {
-//     foreignKey: 'user_id'
+//     foreignKey: 'user_id',
+//     onDelete: "SET NULL"
+
 // });
 
 // User.hasOne(Diary, {
@@ -47,7 +21,9 @@ DiaryEntry.belongsTo(User, {
 // });
 
 // Diary.belongsTo(User, {
-//     foreignKey: "user_id"
+//     foreignKey: "user_id",
+//     onDelete: "SET NULL"
+
 // });
 
 // Diary.hasMany(DiaryEntry, {
@@ -63,7 +39,8 @@ DiaryEntry.belongsTo(User, {
 // });
 
 // Grandparents.belongsTo(Family, {
-//     foreignKey: "family_id"
+//     foreignKey: "family_id",
+//     onDelete: "SET NULL"
 // });
 
 // Family.hasMany(Parents, {
@@ -71,7 +48,9 @@ DiaryEntry.belongsTo(User, {
 // });
 
 // Parents.belongsTo(Family, {
-//     foreignKey: "family_id"
+//     foreignKey: "family_id",
+//     onDelete: "SET NULL"
+
 // });
 
 // Family.hasMany(Siblings, {
@@ -79,8 +58,40 @@ DiaryEntry.belongsTo(User, {
 // });
 
 // Siblings.belongsTo(Family, {
-//     foreignKey: "family_id"
-// });
+//     foreignKey: "family_id",
+//     onDelete: "SET NULL"
 
+// });
+User.hasMany(Grandparents, {
+    foreignKey: "user_id"
+})
+Grandparents.belongsTo(User, {
+    foreignKey: "user_id",
+    onDelete: "SET NULL"
+})
+
+User.hasMany(Parents, {
+    foreignKey: "user_id"
+})
+Parents.belongsTo(User, {
+    foreignKey: "user_id",
+    onDelete: "SET NULL"
+})
+
+User.hasMany(Siblings, {
+    foreignKey: "user_id"
+})
+Siblings.belongsTo(User, {
+    foreignKey: "user_id",
+    onDelete: "SET NULL"
+})
+
+User.hasMany(DiaryEntry, {
+    foreignKey: "user_id"
+})
+DiaryEntry.belongsTo(User, {
+    foreignKey: "user_id",
+    onDelete: "SET NULL"
+})
 // module.exports = { User, Diary, DiaryEntry, Family, Grandparents, Parents, Siblings }
 module.exports = { User, DiaryEntry, Grandparents, Parents, Siblings }

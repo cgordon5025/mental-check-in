@@ -1,11 +1,28 @@
 const router = require('express').Router()
-const { User, DiaryEntry } = require('../../../models')
+const { User, DiaryEntry } = require('../../models')
 
-router.post('/', async (req, res) => {
+
+router.get('/:id', async (req, res) => {
     try {
-        const body = req.body
+        const diaryData = await User.findByPk(req.params.id, {
+            include: [{ model: DiaryEntry }]
+        });
+        if (!diaryData) {
+            res.status(400).json({ message: "no diary found with this id" })
+        } else {
+            res.status(200).json(diaryData)
+        }
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+router.post('/:id', async (req, res) => {
+    try {
         const newEntry = await DiaryEntry.create({
-            ...body
+            title: req.body.title,
+            description: req.body.description,
+            user_id: req.params.id
+
         });
         res.status(200).json(newEntry)
     } catch (err) {
